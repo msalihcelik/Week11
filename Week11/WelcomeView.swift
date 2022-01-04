@@ -21,6 +21,7 @@ public class WelcomeView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.backgroundColor = .clear
+        label.numberOfLines = 0
         return label
     }()
     
@@ -29,7 +30,7 @@ public class WelcomeView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.gray, for: .normal)
         button.setTitle("Button", for: .normal)
-        button.layer.cornerRadius = 50
+        button.layer.cornerRadius = 5
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 2
         button.layer.backgroundColor = UIColor.systemGray4.cgColor
@@ -39,24 +40,32 @@ public class WelcomeView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addSubviews()
         configureContents()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        addSubviews()
         configureContents()
     }
     
-    private func configureContents() {
+    private func addSubviews() {
         addSubview(label)
         label.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
+        label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        
         addSubview(button)
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         button.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 100).isActive = true
+        button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -100).isActive = true
+    }
+    
+    private func configureContents() {
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
     @objc

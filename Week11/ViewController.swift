@@ -22,15 +22,15 @@ final class ViewController: UIViewController {
         welcomeView.backgroundColor = .yellow
         welcomeView.delagate = self
         welcomeView.translatesAutoresizingMaskIntoConstraints = false
-        welcomeView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
-        welcomeView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        welcomeView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        welcomeView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         welcomeView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         welcomeView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
     }
     
     private func setupView() {
         let log = UserDefaults.standard.object(forKey: "Logged")
-        if log != nil {
+        if log == nil {
             let label = UILabel()
             view.addSubview(label)
             view.backgroundColor = .systemBrown
