@@ -30,7 +30,7 @@ final class ViewController: UIViewController {
     
     private func setupView() {
         let log = UserDefaults.standard.object(forKey: "Logged")
-        if log == nil {
+        if log != nil {
             let label = UILabel()
             view.addSubview(label)
             view.backgroundColor = .systemBrown
